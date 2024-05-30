@@ -13,11 +13,13 @@ public class RepoItemImpl implements RepositoryItem{
 
     Map<Long, Item> items = new HashMap<>();
     Map<Long, Set<Item>> itemsOwners = new HashMap<>();
+    Map<Long, Set<String>> feedback = new HashMap<>();
 
 
 
     @Override
     public Item addItem(Item item) {
+        itemsOwners.putIfAbsent(item.getOwner().getId(), new HashSet<>());
         itemsOwners.get(item.getOwner().getId()).add(item);
         items.put(item.getId(), item);
         return null;
@@ -57,5 +59,13 @@ public class RepoItemImpl implements RepositoryItem{
         return items;
 
     }
+
+    @Override
+    public String writeFeedback(String text, long itemId) {
+        feedback.putIfAbsent(itemId, new HashSet<>());
+        feedback.get(itemId).add(text);
+        return "GOOD!!! Thank you!";
+    }
+
 
 }

@@ -1,6 +1,7 @@
 package ru.shareit.user.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import ru.shareit.item.Item;
 import ru.shareit.user.MapperUser;
 import ru.shareit.user.User;
 import ru.shareit.user.UserDto;
@@ -8,10 +9,12 @@ import ru.shareit.user.UserDto;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class RepoUserImpl implements RepositoryUser{
     Map<Long, User> users = new HashMap<>();
+    Map<Long, Set<Item>> usedItems = new HashMap<>();
 
     MapperUser mapperUser;
 
@@ -46,5 +49,10 @@ public class RepoUserImpl implements RepositoryUser{
     @Override
     public Collection<User> getUsers() {
         return users.values();
+    }
+
+    @Override
+    public Set<Item> getUsedItems(long userId) {
+        return usedItems.get(userId);
     }
 }

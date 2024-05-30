@@ -1,10 +1,12 @@
 package ru.shareit.user.repository;
 
+import ru.shareit.item.Item;
 import ru.shareit.user.User;
 import ru.shareit.user.UserDto;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Set;
 
 public interface RepositoryUser {
 
@@ -13,4 +15,5 @@ public interface RepositoryUser {
     void deleteUserById(long id);
     User updateUserById(User user, long id);
     Collection<User> getUsers();
+    Set<Item> getUsedItems(long userId);
 }

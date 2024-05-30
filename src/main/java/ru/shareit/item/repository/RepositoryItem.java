@@ -16,4 +16,6 @@ public interface RepositoryItem {
 
     Collection<Item> getAllItems();
 
+    String writeFeedback(String text, long itemId);
+
 }

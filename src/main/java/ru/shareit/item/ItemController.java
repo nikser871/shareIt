@@ -7,6 +7,7 @@ import ru.shareit.item.repository.RepositoryItem;
 import ru.shareit.item.service.ItemService;
 
 import java.util.Collection;
+import java.util.Set;
 
 @RestController(value = "/items")
 public class ItemController {
@@ -49,6 +50,18 @@ public class ItemController {
     public Collection<ItemDto> search(@RequestParam String text) {
         return itemService.searchItem(text);
     }
+
+   @GetMapping(value = "/item/used")
+    public Set<Item> getUsedItems(@RequestHeader("X-Later-User-Id") long id) {
+        return itemService.getUserItems(id);
+   }
+
+   @PutMapping(value = "/item/feedback/{itemId}")
+    public String writeFeedback(@RequestBody String text,
+                                @PathVariable long itemId) {
+        return itemService.writeFeedback(text, itemId);
+    }
+
 
 
 

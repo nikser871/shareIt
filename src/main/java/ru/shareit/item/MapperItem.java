@@ -22,7 +22,7 @@ public class MapperItem {
     }
 
     public ItemDto toDto(Item item) {
-        return new ItemDto(item.getName(),
+        return new ItemDto(item.getId(),item.getName(),
                 item.getDescription(),
                 item.isAvailable(), item.getCountOfBookings());
     }
