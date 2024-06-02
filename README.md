@@ -1,0 +1,1 @@
+No adequate shareIT
